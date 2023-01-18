@@ -1,35 +1,35 @@
-class Resume
+using System;
+
+
+
+class Program
+
 {
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string PhoneNumber { get; set; }
-    public string Summary { get; set; }
-    public List<JobHistory> JobHistories { get; set; }
 
-    public Resume(string name, string email, string phoneNumber, string summary)
+    static void Main(string[] args)
+
     {
-        Name = name;
-        Email = email;
-        PhoneNumber = phoneNumber;
-        Summary = summary;
-        JobHistories = new List<JobHistory>();
-    }
-}
 
-class JobHistory
-{
-    public string Company { get; set; }
-    public string Position { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public string Description { get; set; }
+        Console.WriteLine("Hello  World!");
 
-    public JobHistory(string company, string position, DateTime startDate, DateTime endDate, string description)
-    {
-        Company = company;
-        Position = position;
-        StartDate = startDate;
-        EndDate = endDate;
-        Description = description;
     }
+
 }
+class Job:
+    def __init__(self, title, company, start_date, end_date, description):
+        self.title = title
+        self.company = company
+        self.start_date = start_date
+        self.end_date = end_date
+        self.description = description
+
+class Resume:
+    def __init__(self, name, email, phone):
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.jobs = []
+
+    def add_job(self, job):
+        self.jobs.append(job);
+
