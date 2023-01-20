@@ -12,13 +12,21 @@ class Program
         Job Job1 = new Job();
         Job1._Job_Job_title="Web Developer";
         Job1._Name_company="Apple";
-        Job1._Year=2026;
+        Job1.start_year=2026;
+        Job1.end_year=2030;
         
-        Resume _MyResume=new Resume();
+        Resume _MyResume=new Resume("Morris Hinneh");
         _MyResume._Jobs.Add(Job1);
+       
+        Job Job2 = new Job();
+        Job2._Job_Job_title="Software engineer";
+        Job2._Name_company="Tesla";
+        Job2.start_year=2020;
+        Job2.end_year=2024;
+        
+    
+        _MyResume._Jobs.Add(Job2);
         _MyResume.Display();
-
-
 
     }
 
