@@ -9,13 +9,21 @@ class Program
     static void Main(string[] args)
 
     {
+        Job Job1 = new Job();
+        Job1._Job_Job_title="Web Developer";
+        Job1._Name_company="Apple";
+        Job1._Year=2026;
+        
+        Resume _MyResume=new Resume();
+        _MyResume._Jobs.Add(Job1);
+        _MyResume.Display();
 
-        Console.WriteLine("Hello  World!");
+
 
     }
 
 }
-// class Job:
+    
 //     def __init__(self, title, company, start_date, end_date, description:
 //         self.title = title
 //         self.company = company

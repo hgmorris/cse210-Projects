@@ -1,35 +1,13 @@
-class Resume
-{
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string PhoneNumber { get; set; }
-    public string Summary { get; set; }
-    public List<JobHistory> JobHistories { get; set; }
+using System; 
+public class Job
+{ 
+    public string _Job_Job_title;
+    public string _Name_company;
+    public int _Year;
 
-    public Resume(string name, string email, string phoneNumber, string summary)
+    public void Displays()
     {
-        Name = name;
-        Email = email;
-        PhoneNumber = phoneNumber;
-        Summary = summary;
-        JobHistories = new List<JobHistory>();
+        Console.WriteLine($"{_Job_Job_title} {_Name_company} {_Year}")
     }
-}
 
-class JobHistory
-{
-    public string Company { get; set; }
-    public string Position { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime EndDate { get; set; }
-    public string Description { get; set; }
-
-    public JobHistory(string company, string position, DateTime startDate, DateTime endDate, string description)
-    {
-        Company = company;
-        Position = position;
-        StartDate = startDate;
-        EndDate = endDate;
-        Description = description;
-    }
 }
