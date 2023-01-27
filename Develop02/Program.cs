@@ -103,9 +103,11 @@ class Program
             int choice = Convert.ToInt32(Console.ReadLine());
  }
             switch (choice);
-            {
+            
 
-            }
-                case 1:
+        }
+                case 1;
                     int index = new Random().Next(prompt);
-  }                  
+        {
+
+ }                
