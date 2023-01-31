@@ -1,186 +1,116 @@
-// using System;
-// using System.Collections.Generic;
-// using System.IO;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
-// class Entry
-// {
-//     public string Prompt { get; set; }
-//     public string Response { get; set; }
-//     public DateTime Date { get; set; }
+class Entry
+{
+    public string Date { get; set; }
+    public string Prompt { get; set; }
+    public string Response { get; set; }
 
-//     public Entry(string prompt, string response, DateTime date)
-//     {
-//         Prompt = prompt;
-//         Response = response;
-//         Date = date;
-//     }
-// }
+    public Entry(string date, string prompt, string response)
+    {
+        Date = date;
+        Prompt = prompt;
+        Response = response;
+    }
+}
 
-// class Journal
-// {
-//     private List<Entry> entries;
-//     private string fileName;
+class Journal
+{
+    private List<Entry> entries;
 
-//     public Journal(string fileName)
-//     {
-//         this.fileName = fileName;
-//         entries = new List<Entry>();
-//     }
+    public Journal()
+    {
+        entries = new List<Entry>();
+    }
 
-//     public void AddEntry(string prompt, string response)
-//     {
-//         Entry entry = new Entry(prompt, response, DateTime.Now);
-//         entries.Add(entry);
-//     }
+    public void AddEntry(Entry entry)
+    {
+        entries.Add(entry);
+    }
 
-//     public void DisplayEntries()
-//     {
-//         foreach (Entry entry in entries)
-//         {
-//             Console.WriteLine("Prompt: " + entry.Prompt);
-//             Console.WriteLine("Response: " + entry.Response);
-//             Console.WriteLine("Date: " + entry.Date);
-//             Console.WriteLine();
-//         }
-//     }
+    public void DisplayJournal()
+    {
+        foreach (Entry entry in entries)
+        {
+            Console.WriteLine("Date: " + entry.Date);
+            Console.WriteLine("Prompt: " + entry.Prompt);
+            Console.WriteLine("Response: " + entry.Response);
+            Console.WriteLine("----------------");
+        }
+    }
 
-//     public void SaveJournal()
-//     {
-//         using (StreamWriter writer = new StreamWriter(fileName))
-//         {
-//             foreach (Entry entry in entries)
-//             {
-//                 writer.WriteLine(entry.Prompt);
-//                 writer.WriteLine(entry.Response);
-//                 writer.WriteLine(entry.Date);
-//             }
-//         }
-//     }
+    public void SaveJournal(string fileName)
+    {
+        using (StreamWriter writer = new StreamWriter(fileName))
+        {
+            foreach (Entry entry in entries)
+            {
+                writer.WriteLine(entry.Date + "|" + entry.Prompt + "|" + entry.Response);
+            }
+        }
+    }
 
-//     public void LoadJournal()
-//     {
-//         entries.Clear();
-//         using (StreamReader reader = new StreamReader(fileName))
-//         {
-//             while (!reader.EndOfStream)
-//             {
-//                 string prompt = reader.ReadLine();
-//                 string response = reader.ReadLine();
-//                 DateTime date = Convert.ToDateTime(reader.ReadLine());
-//                 Entry entry = new Entry(prompt, response, date);
-//                 entries.Add(entry);
-//             }
-//         }
-//     }
-// }
+    public void LoadJournal(string fileName)
+    {
+        entries.Clear();
 
-// class Program
-// {
-//     static List<string> prompts = new List<string>()
-//     {
-//         "Who was the most interesting person I interacted with today?",
-//         "What was the best part of my day?",
-//         "How did I see the hand of the Lord in my life today?",
-//         "What was the strongest emotion I felt today?",
-//         "If I had one thing I could do over today, what would it be?"
-//     }
-//     static void Main(string[] args)
-//     {
-    
-//         Journal journal = new Journal("journal.txt");
-//         bool isrunning = true;
-//         Console.Write("------Prompt Menu.-------------");
-//         while (isrunning);
-//         {
-//             Console.WriteLine("Journal Options:");
-//             Console.WriteLine("1. Write a new entry");
-//             Console.WriteLine("2. Display journal");
-//             Console.WriteLine("3. Save journal to a file");
-//             Console.WriteLine("4. Load journal from a file");
-//             Console.WriteLine("5. Exit");
-//             Console.WriteLine();
-//             Console.Write("Please select an option: ");
-
-//             int choice = Convert.ToInt32(Console.ReadLine());
-//         }
-//     }
-// }
-// };
-    
-
-// //             switch (choice);
-            
-
-// //         }
-// //                 case 1;
-// //                     int index = new Random().Next(prompt);
-// //         {
-
-// //  }                
-
+        if (File.Exists(fileName))
+        {
+            using (StreamReader reader = new StreamReader(fileName))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] parts = line.Split("|");
+                    Entry entry = new Entry(parts[0], parts[1], parts[2]);
+                    entries.Add(entry);
+                }
+            }
+        }
+    }
+}
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        int choice = 0;
+        Journal journal = new Journal();
+        List<string> prompts = new List<string>();
+        prompts.Add("Who was the most interesting person I interacted with today?");
+        prompts.Add("What was the best part of my day?");
+        prompts.Add("How did I see the hand of the Lord in my life today?");
+        prompts.Add("What was the strongest emotion I felt today?");
+        prompts.Add("If I had one thing I could do over today, what would it be?");
+    
         
-
-        // Journal journal = new Journal("journal.txt");
-        // bool isrunning = true;
-        Console.WriteLine("------Prompt Menu.-------------");
-        Console.WriteLine("");
-        Console.WriteLine("Please select an option: ");
-        Console.WriteLine();
-        Console.WriteLine("1. Write a new entry");
-        Console.WriteLine("2. Display journal");
-        Console.WriteLine("3. Save journal to a file");
-        Console.WriteLine("4. Load journal from a file");
-        Console.WriteLine("5. Exit");
-        Console.Write("> ");
-        
-
-        
-        List<string> notes = new List<string>();
-        while (choice != 5)
+        while (true)
         {
-            //Console.WriteLine("Journal Options:");
-            choice = Convert.ToInt32(Console.ReadLine());
+        
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display the journal");
+            Console.WriteLine("3. Save the journal to a file");
+            Console.WriteLine("4. Load the journal from a file");
+            Console.WriteLine("5. Exit");
+            Console.WriteLine("Enter your choice:");
+       
 
-            if (choice == 1)
+            int choice = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+        if (choice == 1)
             {
-                Console.WriteLine("Who was the most interesting person i interacted with today? ");
+            Random rand = new Random();
+            int index = rand.Next(prompts.Count);
+            string prompt = prompts[index];
 
-                string note = Console.ReadLine();
-                notes.Add(note);
-                foreach (string n in notes)
-                    Console.WriteLine(n);
-                ////Console.WriteLine(n);
+            Console.WriteLine("Prompt: " + prompt);
+            Console.WriteLine();
             }
-
-            if (choice == 2)
-            {
-                Console.WriteLine();
-            }
-
-            if (choice == 3)
-            {
-                Console.WriteLine();
-
-            }
-            if (choice == 4)
-            {
-                Console.WriteLine("4. Load journal from a file");
-            }
-
-            if (choice == 5)
-            {
-                System.Environment.Exit(0);
-            }
+            
 
         }
-
-    }
-
-
-};
+    }        
+}
+                
