@@ -77,7 +77,9 @@ class Program
     static void Main(string[] args)
     {
         Journal journal = new Journal();
+        Random rand = new Random();
         List<string> prompts = new List<string>();
+        List<string> responses = new List<string>();
         prompts.Add("Who was the most interesting person I interacted with today?");
         prompts.Add("What was the best part of my day?");
         prompts.Add("How did I see the hand of the Lord in my life today?");
@@ -95,22 +97,58 @@ class Program
             Console.WriteLine("5. Exit");
             Console.WriteLine("Enter your choice:");
        
-
+             
+            string[] choices = {"Write a new entry.", "Display the journal.", "Save the journal to a file.",
+                             "Load the journal from a file", "Exit"};  
+                
+            
             int choice = int.Parse(Console.ReadLine());
             Console.WriteLine();
 
-        if (choice == 1)
+            if (choice== 1)
             {
-            Random rand = new Random();
-            int index = rand.Next(prompts.Count);
-            string prompt = prompts[index];
+            int idx = rand.Next(prompts.Count);
+            System.Console.WriteLine(prompts[idx]);
+            string response = Console.ReadLine();
+            responses.Add(response);
+            System.Console.WriteLine(responses);
+            foreach(string answer in responses)
+            {
+                System.Console.WriteLine("Response: " + answer);
 
-            Console.WriteLine("Prompt: " + prompt);
-            Console.WriteLine();
             }
-            
 
+
+            }
+            if(choice == 5)
+            {
+                System.Environment.Exit(0);
+            }
+            // {
+            //     case 1:
+            //     journal.writeEntry();
+            //     break;
+            //     case 2:
+            //     // character = ''
+            //     // strings = ""
+            //     Console.WriteLine("AddEntry");
+            //     // entries.Add(entry);
+            //     break;
+            //     case 3:
+            //     // journal.Save();
+            //     Console.WriteLine("SaveJournal");
+            //     break;
+            //     case 4:
+            //     Console.WriteLine("SaveJournal");
+            //     Load.Journal();
+            //     break;
+            //     case 5:
+            //     Load.Journal();
+            //     Console.WriteLine("LoadJournal");
+            //     static void Main();
+            // }
         }
-    }        
+    }    
+        
 }
                 
