@@ -107,20 +107,22 @@ class Program
 
             if (choice== 1)
             {
-            int idx = rand.Next(prompts.Count);
-            System.Console.WriteLine(prompts[idx]);
-            string response = Console.ReadLine();
-            responses.Add(response);
-            System.Console.WriteLine(responses);
-            foreach(string answer in responses)
-            {
-                System.Console.WriteLine("Response: " + answer);
+                int idx = rand.Next(prompts.Count);
+                System.Console.WriteLine(prompts[idx]);
+                
+                string response = Console.ReadLine();
+                
+                responses.Add(response);
+                System.Console.WriteLine(responses);
+                
+                foreach(string answer in responses)
+                {
+                    System.Console.WriteLine("Response: " + answer);
+                }
+
 
             }
-
-
-            }
-            if(choice == 5)
+            else if(choice == 5)
             {
                 System.Environment.Exit(0);
             }
