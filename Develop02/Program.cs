@@ -4,21 +4,20 @@ using System.IO;
 
 class Entry
 {
-    public string Date { get; set; }
-    public string Prompt { get; set; }
-    public string Response { get; set; }
+    public string date;
+    public string prompt;
+    public string response;
 
-    public Entry(string date, string prompt, string response)
+    public Entry ()
     {
-        Date = date;
-        Prompt = prompt;
-        Response = response;
+        DateTime dateTime = DateTime.Now;
+        date = dateTime.ToShortDateString();
     }
 }
 
 class Journal
 {
-    private List<Entry> entries;
+    public List<Entry> entries;
 
     public Journal()
     {
@@ -34,9 +33,9 @@ class Journal
     {
         foreach (Entry entry in entries)
         {
-            Console.WriteLine("Date: " + entry.Date);
-            Console.WriteLine("Prompt: " + entry.Prompt);
-            Console.WriteLine("Response: " + entry.Response);
+            Console.WriteLine("Date: " + entry.date);
+            Console.WriteLine("Prompt: " + entry.prompt);
+            Console.WriteLine("Response: " + entry.response);
             Console.WriteLine("----------------");
         }
     }
@@ -47,7 +46,7 @@ class Journal
         {
             foreach (Entry entry in entries)
             {
-                writer.WriteLine(entry.Date + "|" + entry.Prompt + "|" + entry.Response);
+                writer.WriteLine(entry.date + "|" + entry.prompt + "|" + entry.response);
             }
         }
     }
@@ -64,7 +63,10 @@ class Journal
                 while ((line = reader.ReadLine()) != null)
                 {
                     string[] parts = line.Split("|");
-                    Entry entry = new Entry(parts[0], parts[1], parts[2]);
+                    Entry entry = new Entry();
+                    entry.date = parts[0];
+                    entry.prompt = parts[1];
+                    entry.response = parts[2];
                     entries.Add(entry);
                 }
             }
@@ -107,13 +109,18 @@ class Program
 
             if (choice== 1)
             {
+                Entry entry = new Entry();
+                
                 int idx = rand.Next(prompts.Count);
                 System.Console.WriteLine(prompts[idx]);
+                entry.prompt = prompts[idx];
                 
                 string response = Console.ReadLine();
                 
                 responses.Add(response);
-                System.Console.WriteLine(responses);
+                entry.response = response;
+                journal.entries.Add(entry);
+
                 
                 foreach(string answer in responses)
                 {
@@ -121,6 +128,22 @@ class Program
                 }
 
 
+            }
+            else if(choice == 2){
+                journal.DisplayJournal();
+
+            }
+            else if(choice == 3){
+                Console.WriteLine("SaveJournal");
+                string filename = Console.ReadLine();
+                journal.SaveJournal(filename);
+
+            }
+            else if(choice == 4){
+                Journal.LoadJournal();
+                Console.WriteLine("LoadJournal");
+                string filename = Console.ReadLine();
+                journal.LoadJournal(filename);
             }
             else if(choice == 5)
             {
