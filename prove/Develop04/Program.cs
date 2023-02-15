@@ -7,12 +7,15 @@ public class Program
         string testText = "For behold this is my work and my glory to bring "
             + "to pass the immortality and eternal life of  man.";
         Scripture scripture = new Scripture(testText);
+        string reference = "Moses 1:39 ";
 
         string choice = "";
         while(choice != "quit")
         {
             
             // 1. show scripture
+            Console.Clear();
+            Console.Write(reference);
             string text = scripture.ToString();
             Console.WriteLine(text);
 

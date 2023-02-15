@@ -20,7 +20,7 @@ public class Scripture
     {
         List<Word> visibleWords = GetVisibleWords();
         Random random = new Random();
-        int index  = random.Next(0, visibleWords.Count - 1);
+        int index  = random.Next(0, visibleWords.Count);
         Word word = visibleWords[index];
         word.Hide();
     }
