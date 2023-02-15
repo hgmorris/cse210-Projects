@@ -134,14 +134,13 @@ class Program
 
             }
             else if(choice == 3){
-                Console.WriteLine("SaveJournal");
+                Console.WriteLine("what is the file name?");
                 string filename = Console.ReadLine();
                 journal.SaveJournal(filename);
 
             }
             else if(choice == 4){
-                Journal.LoadJournal();
-                Console.WriteLine("LoadJournal");
+                Console.WriteLine("what is the file name?");
                 string filename = Console.ReadLine();
                 journal.LoadJournal(filename);
             }
