@@ -1,39 +1,59 @@
 using System;
 
-public class Program
+class Program
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
-        string testText = "For behold this is my work and my glory to bring "
-            + "to pass the immortality and eternal life of  man.";
-        Scripture scripture = new Scripture(testText);
-        string reference = "Moses 1:39 ";
-
-        string choice = "";
-        while(choice != "quit")
+        int menuChoice = 0;
+        // Menu
+        while (menuChoice != 4)
         {
-            
-            // 1. show scripture
-            Console.Clear();
-            Console.Write(reference);
-            string text = scripture.ToString();
-            Console.WriteLine(text);
+        Console.WriteLine("Menu Options:");
+        Console.WriteLine("\t1. Start Breathing Activity");
+        Console.WriteLine("\t2. Start Reflecting Activity");
+        Console.WriteLine("\t3. Start Listing Activity");
+        Console.WriteLine("\t4. Quit");
+        Console.Write("Select a choice from the menu: ");
+        menuChoice = Convert.ToInt16(Console.ReadLine());
 
-            // 2. wait for input
-            choice = Console.ReadLine();
+        if (menuChoice == 1) {
+            // Activity Beginning Message
+            BreathingActivity breathingActivity = new BreathingActivity();
+            breathingActivity.ActivityBeginMessage("Breathing", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.");
 
-            // 3. if not quit hide a word
-            if (choice != "quit" || choice != "restart")
-            {
-                scripture.RandomlyHideWord();
-            }
+            // Breathing Activity
+            breathingActivity.BreathingLoop();
 
-            // 4. restore whole thing
-            if (choice == "restart")
-            {
-                scripture.MakeAllWordsVisible();
-            }
+            // Activity End Message
+            breathingActivity.ActivityEndMessage("Breathing");
+
         }
+
+        if (menuChoice == 2) {
+            // Activity Beginning Message
+            ReflectingActivity reflectingActivity = new ReflectingActivity();
+            reflectingActivity.ActivityBeginMessage("Reflecting", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
+
+            // Reflecting Activity
+            reflectingActivity.ReflectingLoop();
+
+            // Activity End Message
+            reflectingActivity.ActivityEndMessage("Reflecting");
+        }
+
+        if (menuChoice == 3) {
+            // Activity Beginning Message
+            ListingActivity listingActivity = new ListingActivity();
+            listingActivity.ActivityBeginMessage("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
+
+            // Listing Activity
+            listingActivity.ListLoop();
+
+            // Activity End Message
+            listingActivity.ActivityEndMessage("Listing");
+        }
+        }
+        
+        Console.WriteLine("Thank you for using the app!");        
     }
 }
-
