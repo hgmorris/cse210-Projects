@@ -1,14 +1,18 @@
 using System;
-using System.Collections.Generic;
+
 
 class Cycling : Activity
 {
     private double speed;
+    private int minutes;
+
+
 
     public Cycling(DateTime date, int minutes, double speed)
         : base(date, minutes)
     {
         this.speed = speed;
+        this.minutes = minutes;
     }
 
     public override double GetSpeed()

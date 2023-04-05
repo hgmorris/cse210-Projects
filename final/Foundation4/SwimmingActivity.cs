@@ -1,15 +1,18 @@
 using System;
-using System.Collections.Generic;
+
 
 
 class Swimming : Activity
 {
     private int laps;
+    private int minutes;
+
 
     public Swimming(DateTime date, int minutes, int laps)
         : base(date, minutes)
     {
         this.laps = laps;
+        this.minutes = minutes;
     }
 
     public override double GetDistance()

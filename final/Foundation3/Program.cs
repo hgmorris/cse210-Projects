@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 class Program
 {
@@ -9,7 +10,10 @@ class Program
         Address address3 = new Address("789 Maple Blvd", "Othertown", "CA", 54321);
 
         Lecture lecture = new Lecture("The Future of Technology", "A discussion of emerging technologies", new DateTime(2023, 4, 15, 19, 0, 0), address1, "John Smith", 50);
-        Reception reception = new Reception("Company Networking Event", "An opportunity to meet");
+        Reception reception = new Reception("Company Networking Event", "An opportunity to meet", new DateTime(2023, 4, 15, 19, 0, 0), address2, "hinnehmorris4@gmail.com");
+       Console.WriteLine(lecture.GetFullDetails());
+        Console.WriteLine(reception.GetFullDetails());
+
     }
  
  
