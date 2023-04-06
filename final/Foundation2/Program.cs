@@ -9,8 +9,8 @@ class Program
         Address usaAddress = new Address("123 Main St", "Anytown", "CA", "USA");
         Address nonUsaAddress = new Address("456 Main St", "Anycity", "ON", "Canada");
 
-        Customer usaCustomer = new Customer("John Doe", usaAddress);
-        Customer nonUsaCustomer = new Customer("Jane Doe", nonUsaAddress);
+        Customer usaCustomer = new Customer("Morris Hinneh", usaAddress);
+        Customer nonUsaCustomer = new Customer("Augustine Donyen", nonUsaAddress);
 
         // Create some products
         Product product1 = new Product("Product 1", "P1", 10.0, 2);

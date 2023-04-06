@@ -10,7 +10,7 @@ class Program
         Address address3 = new Address("789 Maple Blvd", "Othertown", "CA", 54321);
 
         Lecture lecture = new Lecture("The Future of Technology", "A discussion of emerging technologies", new DateTime(2023, 4, 15, 19, 0, 0), address1, "John Smith", 50);
-        Reception reception = new Reception("Company Networking Event", "An opportunity to meet", new DateTime(2023, 4, 15, 19, 0, 0), address2, "hinnehmorris4@gmail.com");
+        Reception reception = new Reception("Company Networking Event", "An opportunity to meet", new DateTime(2024, 6, 19, 13, 3, 2), address2, "hinnehmorris4@gmail.com, morrisonjohnson@yahoo.com");
        Console.WriteLine(lecture.GetFullDetails());
         Console.WriteLine(reception.GetFullDetails());
 
